@@ -1,21 +1,31 @@
 // example of async handler using async-await
 // https://github.com/netlify/netlify-lambda/issues/43#issuecomment-444618311
+import axios from 'axios';
 
-// @ts-ignore
-import axios from "axios"
-export async function handler(event, context) {
+async function getJoke(): Promise<string> {
   try {
-    const response = await axios.get("https://icanhazdadjoke.com", { headers: { Accept: "application/json" } })
-    const data = response.data
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ msg: data.joke })
-    }
-  } catch (err) {
-    console.log(err) // output to netlify function log
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
-    }
+    const response = await axios.get('https://icanhazdadjoke.com', { headers: { Accept: 'application/json' } });
+    return response.data.joke;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 }
+
+export async function handler(event: any, context: any): Promise<{ statusCode: number, body: string }> {
+  try {
+    const joke = await getJoke();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ msg: joke })
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ msg: error.message })
+    };
+  }
+}
+
+

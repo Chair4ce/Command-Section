@@ -1,52 +1,24 @@
-import React, { Component } from "react"
-// @ts-ignore
-import logo from "./logo.svg"
-import "./App.css"
-
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
-
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
-
-  render() {
-    // @ts-ignore
-    const { loading, msg } = this.state
+import React from 'react';
+import {Route, Routes} from "react-router";
+import Main, {BlogPost} from "./blog/Blog";
+const App: React.FC = () => {
 
     return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
+                <Routes>
+                    <Route path="/" element={<Main posts={new Array<BlogPost>({
+                            author: "Me",
+                            content: "Stuff",
+                            date: "Today",
+                            title: "Jacy's Blog Post 1 "
+                        },
+                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 2 "},
+                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 3 "},
+                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 4 "},
+                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 5 "},
+                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 6 "})}/>}/>
+                </Routes>
+    );
 }
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
-      </div>
-    )
-  }
-}
+export default App;
 
-export default App
