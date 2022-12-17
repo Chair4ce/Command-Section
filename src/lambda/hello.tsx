@@ -1,4 +1,4 @@
-// this uses the callback syntax, however, we encourage you to try the async/await syntax shown in async-dadjoke.js
+// this uses the callback syntax, however, we encourage you to try the async/await syntax shown in async-dadjoke.tsx
 export function handler(event, context, callback) {
   console.log('queryStringParameters', event.queryStringParameters)
   callback(null, {

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+// @ts-ignore
 import logo from "./logo.svg"
 import "./App.css"
 
@@ -18,6 +19,7 @@ class LambdaDemo extends Component {
   }
 
   render() {
+    // @ts-ignore
     const { loading, msg } = this.state
 
     return (
