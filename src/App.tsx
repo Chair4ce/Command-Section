@@ -9,13 +9,13 @@ const App: React.FC = () => {
                             author: "Me",
                             content: "Stuff",
                             date: "Today",
-                            title: "Jacy's Blog Post 1 "
+                            title: "My Blog Post 1 "
                         },
-                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 2 "},
-                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 3 "},
-                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 4 "},
-                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 5 "},
-                        {author: "Jacy", content: "Stuff", date: "Today", title: "Jacy's Blog Post 6 "})}/>}/>
+                        {author: "Me", content: "Stuff", date: "Today", title: "My Blog Post 2 "},
+                        {author: "Me", content: "Stuff", date: "Today", title: "My Blog Post 3 "},
+                        {author: "Me", content: "Stuff", date: "Today", title: "My Blog Post 4 "},
+                        {author: "Me", content: "Stuff", date: "Today", title: "My Blog Post 5 "},
+                        {author: "Me", content: "Stuff", date: "Today", title: "My Blog Post 6 "})}/>}/>
                 </Routes>
     );
 }
